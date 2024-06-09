@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Currículo</title>
+</head>
+<body>
+<h1>Editar Currículo</h1>
+<form action="#" th:action="@{/curriculos/{id}(id=${curriculo.id})}" th:object="${curriculo}" method="post">
+    <div>
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" th:field="*{nome}" />
+    </div>
+    <div>
+        <label for="email">Email:</label>
+        <input type="email" id="email" th:field="*{email}" />
+    </div>
+    <div>
+        <label for="telefone">Telefone:</label>
+        <input type="text" id="telefone" th:field="*{telefone}" />
+    </div>
+    <div>
+        <label for="endereco">Endereço:</label>
+        <input type="text" id="endereco" th:field="*{endereco}" />
+    </div>
+    <div>
+        <label for="resumo">Resumo:</label>
+        <textarea id="resumo" th:field="*{resumo}"></textarea>
+    </div>
+    <div>
+        <button type="submit">Salvar</button>
+    </div>
+</form>
+<a th:href="@{/}">Voltar</a>
+
+</body>
+</html>

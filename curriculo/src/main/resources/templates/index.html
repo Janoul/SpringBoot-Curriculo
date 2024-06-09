@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currículo</title>
+</head>
+<body>
+<h1>Currículos</h1>
+
+<h2>Adicionar Novo Currículo</h2>
+<form action="#" th:action="@{/curriculos}" th:object="${curriculo}" method="post">
+    <div>
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" th:field="*{nome}" />
+    </div>
+    <div>
+        <label for="email">Email:</label>
+        <input type="email" id="email" th:field="*{email}" />
+    </div>
+    <div>
+        <label for="telefone">Telefone:</label>
+        <input type="text" id="telefone" th:field="*{telefone}" />
+    </div>
+    <div>
+        <label for="endereco">Endereço:</label>
+        <input type="text" id="endereco" th:field="*{endereco}" />
+    </div>
+    <div>
+        <label for="resumo">Resumo:</label>
+        <textarea id="resumo" th:field="*{resumo}"></textarea>
+    </div>
+    <div>
+        <button type="submit">Adicionar</button>
+    </div>
+</form>
+
+<h2>Lista de Currículos</h2>
+<table>
+    <thead>
+    <tr>
+        <th>Nome</th>
+        <th>Email</th>
+        <th>Telefone</th>
+        <th>Endereço</th>
+        <th>Resumo</th>
+        <th>Ações</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="curriculo : ${curriculos}">
+        <td th:text="${curriculo.nome}">Nome</td>
+        <td th:text="${curriculo.email}">Email</td>
+        <td th:text="${curriculo.telefone}">Telefone</td>
+        <td th:text="${curriculo.endereco}">Endereço</td>
+        <td th:text="${curriculo.resumo}">Resumo</td>
+        <td>
+            <a th:href="@{/curriculos/{id}/edit(id=${curriculo.id})}">Editar</a>
+            <a th:href="@{/curriculos/{id}/delete(id=${curriculo.id})}">Excluir</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
